@@ -1,7 +1,7 @@
 from gpiozero import Robot
 from time import sleep
 
-tote = Robot(left=(7, 8), right=(9, 10))
+tote = Robot(left=(13, 15), right=(18, 20))
 
 
 tote.forward(0.5, 3)
@@ -215,7 +215,7 @@ def main():
         # plt.pause(.001)
 
     # terminate process 1
-    p1.terminate()
+    #p1.terminate()
 
 
 if __name__ == '__main__':
