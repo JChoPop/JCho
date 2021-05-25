@@ -9,6 +9,8 @@ in2 = 24
 enB = 22
 in3 = 17
 in4 = 27
+
+GPIO.setwarnings(False)
 # Setup as outputs
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(in1, GPIO.OUT)
@@ -26,69 +28,76 @@ GPIO.output(in4, GPIO.LOW)
 GPIO.output(enA, GPIO.HIGH)
 GPIO.output(enB, GPIO.HIGH)
 
+# forward
+GPIO.output(in1, GPIO.HIGH)
+GPIO.output(in2, GPIO.LOW)
+GPIO.output(in3, GPIO.HIGH)
+GPIO.output(in4, GPIO.LOW)
+GPIO.output(enA, GPIO.HIGH)
+GPIO.output(enB, GPIO.HIGH)
+sleep(3)
 
-while (1):
-    # forward
-    GPIO.output(in1, GPIO.HIGH)
-    GPIO.output(in2, GPIO.LOW)
-    GPIO.output(in3, GPIO.HIGH)
-    GPIO.output(in4, GPIO.LOW)
-    GPIO.output(enA, GPIO.HIGH)
-    GPIO.output(enB, GPIO.HIGH)
-    sleep(3)
+# stop
+GPIO.output(in1, GPIO.LOW)
+GPIO.output(in2, GPIO.LOW)
+GPIO.output(in3, GPIO.LOW)
+GPIO.output(in4, GPIO.LOW)
+GPIO.output(enA, GPIO.LOW)
+GPIO.output(enB, GPIO.LOW)
+sleep(1)
 
-    # stop
-    GPIO.output(in1, GPIO.LOW)
-    GPIO.output(in2, GPIO.LOW)
-    GPIO.output(in3, GPIO.LOW)
-    GPIO.output(in4, GPIO.LOW)
-    GPIO.output(enA, GPIO.LOW)
-    GPIO.output(enB, GPIO.LOW)
-    sleep(1)
+# backward
+GPIO.output(in1, GPIO.LOW)
+GPIO.output(in2, GPIO.HIGH)
+GPIO.output(in3, GPIO.LOW)
+GPIO.output(in4, GPIO.HIGH)
+GPIO.output(enA, GPIO.HIGH)
+GPIO.output(enB, GPIO.HIGH)
+sleep(3)
 
-    # backward
-    GPIO.output(in1, GPIO.LOW)
-    GPIO.output(in2, GPIO.HIGH)
-    GPIO.output(in3, GPIO.LOW)
-    GPIO.output(in4, GPIO.HIGH)
-    GPIO.output(enA, GPIO.HIGH)
-    GPIO.output(enB, GPIO.HIGH)
-    sleep(3)
+# stop
+GPIO.output(in1, GPIO.LOW)
+GPIO.output(in2, GPIO.LOW)
+GPIO.output(in3, GPIO.LOW)
+GPIO.output(in4, GPIO.LOW)
+GPIO.output(enA, GPIO.LOW)
+GPIO.output(enB, GPIO.LOW)
+sleep(1)
 
-    # stop
-    GPIO.output(in1, GPIO.LOW)
-    GPIO.output(in2, GPIO.LOW)
-    GPIO.output(in3, GPIO.LOW)
-    GPIO.output(in4, GPIO.LOW)
-    GPIO.output(enA, GPIO.LOW)
-    GPIO.output(enB, GPIO.LOW)
-    sleep(1)
+# steer right
+GPIO.output(in1, GPIO.HIGH)
+GPIO.output(in2, GPIO.LOW)
+GPIO.output(in3, GPIO.LOW)
+GPIO.output(in4, GPIO.HIGH)
+GPIO.output(enA, GPIO.HIGH)
+GPIO.output(enB, GPIO.HIGH)
+sleep(3)
 
-    # steer right
-    GPIO.output(in1, GPIO.HIGH)
-    GPIO.output(in2, GPIO.LOW)
-    GPIO.output(in3, GPIO.LOW)
-    GPIO.output(in4, GPIO.HIGH)
-    GPIO.output(enA, GPIO.HIGH)
-    GPIO.output(enB, GPIO.HIGH)
-    sleep(3)
+# stop
+GPIO.output(in1, GPIO.LOW)
+GPIO.output(in2, GPIO.LOW)
+GPIO.output(in3, GPIO.LOW)
+GPIO.output(in4, GPIO.LOW)
+GPIO.output(enA, GPIO.LOW)
+GPIO.output(enB, GPIO.LOW)
+sleep(1)
 
-    # stop
-    GPIO.output(in1, GPIO.LOW)
-    GPIO.output(in2, GPIO.LOW)
-    GPIO.output(in3, GPIO.LOW)
-    GPIO.output(in4, GPIO.LOW)
-    GPIO.output(enA, GPIO.LOW)
-    GPIO.output(enB, GPIO.LOW)
-    sleep(1)
+# steer left
+GPIO.output(in1, GPIO.LOW)
+GPIO.output(in2, GPIO.HIGH)
+GPIO.output(in3, GPIO.HIGH)
+GPIO.output(in4, GPIO.LOW)
+GPIO.output(enA, GPIO.HIGH)
+GPIO.output(enB, GPIO.HIGH)
+sleep(3)
 
-    # steer left
-    GPIO.output(in1, GPIO.LOW)
-    GPIO.output(in2, GPIO.HIGH)
-    GPIO.output(in3, GPIO.HIGH)
-    GPIO.output(in4, GPIO.LOW)
-    GPIO.output(enA, GPIO.HIGH)
-    GPIO.output(enB, GPIO.HIGH)
-    sleep(3)
+# stop
+GPIO.output(in1, GPIO.LOW)
+GPIO.output(in2, GPIO.LOW)
+GPIO.output(in3, GPIO.LOW)
+GPIO.output(in4, GPIO.LOW)
+GPIO.output(enA, GPIO.LOW)
+GPIO.output(enB, GPIO.LOW)
+sleep(1)
 
 GPIO.cleanup()
