@@ -1,8 +1,11 @@
-# Prior to starting program, open RPi terminal and type the following
+# Prior to starting program, make sure virtual env is activated in terminal
+# To activate it, open RPi terminal and type the following 3 lines
 # cd Desktop
 # cd tf_pi
 # source ToteEnv/bin/activate
-# Then in the current window of Thonny, go to Run menu --> 'Select interpreter'
+
+# Then to make sure the correct interpreter is selected,
+# in the current window of Thonny, go to Run menu --> 'Select interpreter'
 # and navigate to /home/pi/Desktop/tf_pi/ToteEnv/bin/python3.7
 
 import RPi.GPIO as GPIO
@@ -145,7 +148,18 @@ while True:
     conf_threshold = 85
     confidence = []
     conf_label = ""
-
+    
+    # create black border at bottom for labels
+    bordered_frame = cv2.copyMakeBorder(
+        square_frame,
+        top=0,
+        bottom=0,
+        left=0,
+        right=0,
+        borderType=cv2.BORDER_CONSTANT,
+        value=[0, 0, 0]
+    )
+    
     # for each one of the classes
     for i in range(0, len(classes)):
         # scale prediction confidence to % and apppend to 1-D list
