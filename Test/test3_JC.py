@@ -49,13 +49,13 @@ import multiprocessing
 import numpy as np
 import cv2
 import tensorflow.keras as tf
-import pyttsx3
+# import pyttsx3
 import math
 import os
 # use matplotlib if cv2.imshow() doesn't work
 # import matplotlib.pyplot as plt
 
-DIR_PATH = os.path.dirname(os.path.realpath(__file__))
+# DIR_PATH = os.path.dirname(os.path.realpath(__file__))
 
 def main():
 
