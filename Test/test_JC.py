@@ -27,71 +27,6 @@ GPIO.output(enA, GPIO.HIGH)
 GPIO.output(enB, GPIO.HIGH)
 
 
-while (1):
-    # forward
-    GPIO.output(in1, GPIO.HIGH)
-    GPIO.output(in2, GPIO.LOW)
-    GPIO.output(in3, GPIO.HIGH)
-    GPIO.output(in4, GPIO.LOW)
-    GPIO.output(enA, GPIO.HIGH)
-    GPIO.output(enB, GPIO.HIGH)
-    sleep(3)
-
-    # stop
-    GPIO.output(in1, GPIO.LOW)
-    GPIO.output(in2, GPIO.LOW)
-    GPIO.output(in3, GPIO.LOW)
-    GPIO.output(in4, GPIO.LOW)
-    GPIO.output(enA, GPIO.LOW)
-    GPIO.output(enB, GPIO.LOW)
-    sleep(1)
-
-    # backward
-    GPIO.output(in1, GPIO.LOW)
-    GPIO.output(in2, GPIO.HIGH)
-    GPIO.output(in3, GPIO.LOW)
-    GPIO.output(in4, GPIO.HIGH)
-    GPIO.output(enA, GPIO.HIGH)
-    GPIO.output(enB, GPIO.HIGH)
-    sleep(3)
-
-    # stop
-    GPIO.output(in1, GPIO.LOW)
-    GPIO.output(in2, GPIO.LOW)
-    GPIO.output(in3, GPIO.LOW)
-    GPIO.output(in4, GPIO.LOW)
-    GPIO.output(enA, GPIO.LOW)
-    GPIO.output(enB, GPIO.LOW)
-    sleep(1)
-
-    # steer right
-    GPIO.output(in1, GPIO.HIGH)
-    GPIO.output(in2, GPIO.LOW)
-    GPIO.output(in3, GPIO.LOW)
-    GPIO.output(in4, GPIO.HIGH)
-    GPIO.output(enA, GPIO.HIGH)
-    GPIO.output(enB, GPIO.HIGH)
-    sleep(3)
-
-    # stop
-    GPIO.output(in1, GPIO.LOW)
-    GPIO.output(in2, GPIO.LOW)
-    GPIO.output(in3, GPIO.LOW)
-    GPIO.output(in4, GPIO.LOW)
-    GPIO.output(enA, GPIO.LOW)
-    GPIO.output(enB, GPIO.LOW)
-    sleep(1)
-
-    # steer left
-    GPIO.output(in1, GPIO.LOW)
-    GPIO.output(in2, GPIO.HIGH)
-    GPIO.output(in3, GPIO.HIGH)
-    GPIO.output(in4, GPIO.LOW)
-    GPIO.output(enA, GPIO.HIGH)
-    GPIO.output(enB, GPIO.HIGH)
-    sleep(3)
-
-
 # La Croix Flavor Detector - Machine Learning on Raspberry Pi
 #
 # Michael D'Argenio
@@ -148,7 +83,7 @@ DIR_PATH = os.path.dirname(os.path.realpath(__file__))
 def main():
 
     # read .txt file to get labels
-    labels_path = f"{DIR_PATH}/labels.txt"
+    labels_path = f"{/home/pi/JCho/Test}/labels.txt"
     # open input file label.txt
     labelsfile = open(labels_path, 'r')
 
@@ -163,7 +98,7 @@ def main():
     labelsfile.close()
 
     # load the teachable machine model
-    model_path = f"{DIR_PATH}/keras_model.h5"
+    model_path = f"{/home/pi/JCho/Test}/keras_model.h5"
     model = tf.models.load_model(model_path, compile=False)
 
     # initialize webcam video object
@@ -263,7 +198,7 @@ def main():
                 conf_label = ""
             # if above confidence threshold, send to queue
             if confidence[i] > conf_threshold:
-                speakQ.put(classes[i])
+        #        speakQ.put(classes[i])
                 threshold_class = classes[i]
         # add label class above confidence threshold
         cv2.putText(
