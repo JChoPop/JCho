@@ -28,7 +28,7 @@ GPIO.output(in4, GPIO.LOW)
 GPIO.output(enA, GPIO.HIGH)
 GPIO.output(enB, GPIO.HIGH)
 
-# forward
+# backward
 GPIO.output(in1, GPIO.HIGH)
 GPIO.output(in2, GPIO.LOW)
 GPIO.output(in3, GPIO.HIGH)
@@ -46,7 +46,7 @@ GPIO.output(enA, GPIO.LOW)
 GPIO.output(enB, GPIO.LOW)
 sleep(1)
 
-# backward
+# forward
 GPIO.output(in1, GPIO.LOW)
 GPIO.output(in2, GPIO.HIGH)
 GPIO.output(in3, GPIO.LOW)
@@ -64,7 +64,7 @@ GPIO.output(enA, GPIO.LOW)
 GPIO.output(enB, GPIO.LOW)
 sleep(1)
 
-# steer right
+# steer left
 GPIO.output(in1, GPIO.HIGH)
 GPIO.output(in2, GPIO.LOW)
 GPIO.output(in3, GPIO.LOW)
@@ -82,7 +82,7 @@ GPIO.output(enA, GPIO.LOW)
 GPIO.output(enB, GPIO.LOW)
 sleep(1)
 
-# steer left
+# steer right
 GPIO.output(in1, GPIO.LOW)
 GPIO.output(in2, GPIO.HIGH)
 GPIO.output(in3, GPIO.HIGH)

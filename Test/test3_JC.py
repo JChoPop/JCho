@@ -36,10 +36,10 @@ GPIO.output(enA, GPIO.HIGH)
 GPIO.output(enB, GPIO.HIGH)
 
 def forward():
-    GPIO.output(in1, GPIO.HIGH)
-    GPIO.output(in2, GPIO.LOW)
-    GPIO.output(in3, GPIO.HIGH)
-    GPIO.output(in4, GPIO.LOW)
+    GPIO.output(in1, GPIO.LOW)
+    GPIO.output(in2, GPIO.HIGH)
+    GPIO.output(in3, GPIO.LOW)
+    GPIO.output(in4, GPIO.HIGH)
     GPIO.output(enA, GPIO.HIGH)
     GPIO.output(enB, GPIO.HIGH)
     sleep(3)
@@ -153,15 +153,14 @@ while True:
         # scale prediction confidence to % and apppend to 1-D list
         confidence.append(int(predictions[0][i]*100))
         # append classes and confidences to text for label
-        conf_label += classes[i] + ": " + str(confidence[i]) + "%; "
+        conf_label += "Frame " + str(framecount) + " :" classes[i] + ": " + str(confidence[i]) + "%; "
 
         # if above confidence threshold, send to queue
         if confidence[i] > conf_threshold:
-            if framecount % 10 == 0:
-                print(conf_label)
-            if i == 0:
+            print(conf_label)
+            if i == 1:
                 forward()
-            elif i == 1:
+            elif i == 0:
                 stop()
         else:
             stop()
