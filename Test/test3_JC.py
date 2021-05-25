@@ -1,11 +1,8 @@
-# Prior to starting program, make sure virtual env is activated in terminal
-# To activate it, open RPi terminal and type the following 3 lines
+# Prior to starting program, open RPi terminal and type the following
 # cd Desktop
 # cd tf_pi
 # source ToteEnv/bin/activate
-
-# Then to make sure the correct interpreter is selected,
-# in the current window of Thonny, go to Run menu --> 'Select interpreter'
+# Then in the current window of Thonny, go to Run menu --> 'Select interpreter'
 # and navigate to /home/pi/Desktop/tf_pi/ToteEnv/bin/python3.7
 
 import RPi.GPIO as GPIO
@@ -47,15 +44,6 @@ def forward():
     GPIO.output(enB, GPIO.HIGH)
     sleep(3)
 
-def backward():
-    GPIO.output(in1, GPIO.LOW)
-    GPIO.output(in2, GPIO.HIGH)
-    GPIO.output(in3, GPIO.LOW)
-    GPIO.output(in4, GPIO.HIGH)
-    GPIO.output(enA, GPIO.HIGH)
-    GPIO.output(enB, GPIO.HIGH)
-    sleep(3)
-
 def stop():
     GPIO.output(in1, GPIO.LOW)
     GPIO.output(in2, GPIO.LOW)
@@ -63,7 +51,7 @@ def stop():
     GPIO.output(in4, GPIO.LOW)
     GPIO.output(enA, GPIO.LOW)
     GPIO.output(enB, GPIO.LOW)
-    sleep(1)
+    sleep(3)
 
 import multiprocessing
 import numpy as np
@@ -148,7 +136,7 @@ while True:
     conf_threshold = 85
     confidence = []
     conf_label = ""
-    
+
     # create black border at bottom for labels
     bordered_frame = cv2.copyMakeBorder(
         square_frame,
@@ -159,7 +147,7 @@ while True:
         borderType=cv2.BORDER_CONSTANT,
         value=[0, 0, 0]
     )
-    
+
     # for each one of the classes
     for i in range(0, len(classes)):
         # scale prediction confidence to % and apppend to 1-D list
@@ -174,15 +162,13 @@ while True:
             if i == 0:
                 forward()
             elif i == 1:
-                backward()
+                stop()
         else:
             stop()
 
     # original video feed implementation
     cv2.imshow("Capturing", bordered_frame)
     cv2.waitKey(10)
-
-    framecount += 1
 
     # # if the above implementation doesn't work properly
     # # comment out two lines above and use the lines below
@@ -191,6 +177,8 @@ while True:
     # plt.imshow(plt_frame)
     # plt.draw()
     # plt.pause(.001)
+
+    framecount += 1
 
 # terminate process 1
 #p1.terminate()
