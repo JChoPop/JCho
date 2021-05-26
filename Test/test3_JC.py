@@ -42,7 +42,6 @@ def forward():
     GPIO.output(in4, GPIO.HIGH)
     GPIO.output(enA, GPIO.HIGH)
     GPIO.output(enB, GPIO.HIGH)
-    sleep(3)
 
 def stop():
     GPIO.output(in1, GPIO.LOW)
@@ -51,7 +50,6 @@ def stop():
     GPIO.output(in4, GPIO.LOW)
     GPIO.output(enA, GPIO.LOW)
     GPIO.output(enB, GPIO.LOW)
-    sleep(3)
 
 import multiprocessing
 import numpy as np
@@ -133,7 +131,7 @@ while True:
     predictions = model.predict(data)
 
     # confidence threshold is 90%.
-    conf_threshold = 85
+    conf_threshold = 90
     confidence = []
     conf_label = ""
 
@@ -150,14 +148,14 @@ while True:
 
     # for each one of the classes
     for i in range(0, len(classes)):
-        # scale prediction confidence to % and apppend to 1-D list
+        # scale prediction confidence to % and append to 1-D list
         confidence.append(int(predictions[0][i]*100))
         # append classes and confidences to text for label
-        conf_label += "Frame " + str(framecount) + " :" classes[i] + ": " + str(confidence[i]) + "%; "
-
-        # if above confidence threshold, send to queue
+        conf_label += "Frame " + str(framecount) + ": " + classes[i] + " = " + str(confidence[i]) + "%; "
+        print(conf_label)
+        
+        # if above confidence threshold
         if confidence[i] > conf_threshold:
-            print(conf_label)
             if i == 1:
                 forward()
             elif i == 0:
